@@ -1,0 +1,1 @@
+const e="data:image/svg+xml,%3csvg%20width='36'%20height='36'%20viewBox='0%200%2036%2036'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3crect%20width='36'%20height='36'%20rx='16'%20fill='white'/%3e%3cpath%20d='M21%2010L13%2018L21%2026'%20stroke='%231B1B1B'%20stroke-width='1.5'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3c/svg%3e";export{e as _};
