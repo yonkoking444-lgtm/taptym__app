@@ -71,4 +71,47 @@ cd frontend
 npm install
 npm run dev -- --host 0.0.0.0
 ```
-# taptym__app
+
+## Deployment setup
+
+This project is structured as two separate apps:
+
+- `frontend/` for Vercel deployment
+- `backend/` for Render deployment
+
+### Frontend on Vercel
+
+1. Import the repository into Vercel.
+2. Set Root Directory to `frontend`.
+3. Keep the default Vite preset.
+4. Add environment variable:
+
+```bash
+VITE_API_URL=https://your-render-backend-url.onrender.com
+```
+
+5. Deploy.
+
+### Backend on Render
+
+1. Create a new Web Service in Render.
+2. Set Root Directory to `backend`.
+3. Build command:
+
+```bash
+pip install -r requirements.txt
+```
+
+4. Start command:
+
+```bash
+uvicorn app.main:app --host 0.0.0.0 --port $PORT
+```
+
+5. Add environment variable:
+
+```bash
+FRONTEND_ORIGINS=https://your-vercel-app.vercel.app
+```
+
+> For a quick demo, SQLite is enough. For real production, use PostgreSQL instead of the local SQLite database.
