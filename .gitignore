@@ -1,2 +1,15 @@
-node_modules
+# Node / frontend
+node_modules/
+frontend/dist/
+frontend/.env
+
+# Python / backend
+backend/.venv/
+backend/.env
 backend/uploads/
+backend/*.db
+backend/*.sqlite3
+
+# OS / editor
+.DS_Store
+.vite/

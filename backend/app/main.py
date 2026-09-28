@@ -16,8 +16,24 @@ ensure_car_columns()
 app = FastAPI(title='Taptym Cars API', version='1.0.0')
 UPLOAD_DIR = Path(__file__).resolve().parent.parent / 'uploads'
 UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
+
+
+def get_allowed_origins() -> list[str]:
+    raw = os.getenv('FRONTEND_ORIGINS', os.getenv('FRONTEND_ORIGIN', 'http://localhost:5173'))
+    origins = [origin.strip() for origin in raw.split(',') if origin.strip()]
+    return origins if origins else ['http://localhost:5173']
+
+
 app.mount('/uploads', StaticFiles(directory=UPLOAD_DIR), name='uploads')
-app.add_middleware(CORSMiddleware, allow_origins=[os.getenv('FRONTEND_ORIGIN', 'http://localhost:5173')], allow_credentials=True, allow_methods=['*'], allow_headers=['*'])
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=get_allowed_origins(),
+    allow_origin_regex=r'https?://(localhost|127\.0\.0\.1|0\.0\.0\.0)(:\d+)?',
+    allow_credentials=True,
+    allow_methods=['*'],
+    allow_headers=['*'],
+)
+
 
 def current_date_label() -> str:
     months = (
