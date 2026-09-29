@@ -115,3 +115,7 @@ FRONTEND_ORIGINS=https://your-vercel-app.vercel.app
 ```
 
 > For a quick demo, SQLite is enough. For real production, use PostgreSQL instead of the local SQLite database.
+cd /Users/muha/taptym_app/backend
+DATABASE_URL=sqlite:///./taptym.db .venv/bin/python -m uvicorn app.main:app --reload --host 127.0.0.1 --port 8000
+> cd /Users/muha/taptym_app/frontend
+npm run dev -- --host 0.0.0.0
